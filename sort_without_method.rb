@@ -1,10 +1,10 @@
-list = Array.new
+list = []
 
 # цикличный запрос ввода
 loop do
-  puts "Enter the words or numbers:"
+  puts 'Enter the words or numbers:'
   item = gets.chomp
-  break if item == ""
+  break if item == ''
   list << item
 end
 
@@ -21,32 +21,32 @@ def sort_words(ar)
   $s = 0
 
   while j < ar.length
-    if (ar[i] > ar[j])
-      temp = ar[i]
+    if ar[i] > ar[j] # сравниваем две позиции, стоящие рядом
+      temp = ar[i] # временная переменная
       ar[i] = ar[j]
       ar[j] = temp
 
-      i = i + 1
-      j = j + 1
-      $s = $s + 1
+      i += 1
+      j += 1
+      $s = $s + 1 # индикатор кол-ва изменений при выполнении ветвления
     else
-      i = i + 1
-      j = j + 1
+      i += 1
+      j += 1
     end # if
-    #puts "inside method i is #{i}, j is #{j}, s is #{$s}" # debug
+    # puts "inside method i is #{i}, j is #{j}, s is #{$s}" # debug
   end # while
 end
 
 def sorting(argum)
   $s = 1
 
-  until $s.eql?(0)
-    #puts "#{argum}" # debug
+  until $s.eql?(0) # пока счётчик не перестанет накручиваться, прогоняем массив
+    # puts "#{argum}" # debug
     sort_words(argum)
-    #puts "in 'until' s is #{$s}" # debug
+    # puts "in 'until' s is #{$s}" # debug
   end
 
-  return argum
+  argum
 end
 
 sorting(list)
